@@ -15,8 +15,8 @@ body {
 }
 
 .container{
-    height: 300px;
-    width: 300px;
+    height: 200px;
+    width: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,43 +24,64 @@ body {
 
 span:nth-child(3n+1) {
     position: absolute;
-    height: 250px;
-    width: 250px;
-    border-radius: 125px;
-    border-color: black;
-    background-color: black;
-    transition: 0.5s;
+    height: 150px;
+    width: 150px;
+    border-radius: 75px;
+    border: 3px solid pink;
+    transition: 50ms;
+    background-color: white;
 }
 
 span:nth-child(3n+2) {
     position: absolute;
-    height: 10px;
-    width: 200px;
+    height: 3px;
+    width: 130px;
     background-color: pink;
     transform: rotateZ(45deg);
-    transition: 0.5s;
+    transition: 0.25s;
 }
 
 span:nth-child(3n+3) {
     position: absolute;
-    height: 10px;
-    width: 200px;
+    height: 3px;
+    width: 130px;
     background-color: pink;
     transform: rotateZ(-45deg);
-    transition: 0.5s;
+    transition: 0.25s;
 }
 
 .container:hover > span:nth-child(3n+1){
-    height: 10px;
-    width: 200px;
+    position: relative;
+    height: 3px;
+    width: 130px;
     border-radius: 0px;
+    border: 0;
     background-color: pink;
+    left: 0;
+    animation: circle-line 0.5s 0.05s 1 ease;
 }
 
 .container:hover > span:nth-child(3n+2){
     transform: rotateZ(0) translateY(20px);
+    animation: bounce-child-2 0.5s 0.05s 1 ease;
 }
 
 .container:hover > span:nth-child(3n+3){
     transform: rotateZ(0) translateY(-20px);
+    animation: bounce-child-3 0.5s 0.05s 1 ease;
+}
+
+@keyframes bounce-child-2 {
+    0%{transform: translateY(20px) rotateZ(0);}
+    50%{transform: translateY(20px) rotateZ(-5deg);}
+}
+
+@keyframes bounce-child-3 {
+    0%{transform: translateY(-20px) rotateZ(0);}
+    50%{transform: translateY(-20px) rotateZ(-5deg);}
+}
+
+@keyframes circle-line {
+    0%{width: 130px; left: 0;}
+    50%{width: 130px; left: -5px;}
 }
